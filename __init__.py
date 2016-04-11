@@ -28,6 +28,7 @@ from collections import deque
 
 # dependencies
 import pyrfc3339
+import influxdb
 from influxdb import InfluxDBClient
 import pytz
 
@@ -70,7 +71,7 @@ class InfluxDB():
         self._sh = smarthome
         self.clsname = self.__class__.__name__
         # DB write queue
-        self._write_queue = deque([], write_queue_max_size)
+        self._write_queue = deque([], int(write_queue_max_size))
         # Item registry
         self._items = set()
 
